@@ -1,0 +1,35 @@
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+
+# Generate some random data
+X = np.random.randint(1, 100, size=(1000, 1))
+y = (X % 2 == 0).astype(int)  # 1 if even, 0 if odd
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train a RandomForestClassifier
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X_train, y_train)
+
+# Function to guess whether a number is even or odd
+def guess_number(number):
+    prediction = model.predict([[number]])
+    if prediction == 1:
+        return "Even"
+    else:
+        return "Odd"
+
+# Game loop
+while True:
+    user_input = input("Enter a number (or 'quit' to exit): ")
+    if user_input.lower() == 'quit':
+        print("Goodbye!")
+        break
+    try:
+        number = int(user_input)
+        result = guess_number(number)
+        print(f"My guess is that {number} is {result}.")
+    except ValueError:
+        print("Please enter a valid number or 'quit' to exit.")
