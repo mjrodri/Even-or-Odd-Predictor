@@ -1,4 +1,4 @@
-# Even-or-Odd-Predictor
+# Even-or-Odd-ML-Predictor
 
 ## Overview
 This Python project implements a simple game where a Random Forest Classifier predicts whether a user-inputted number is even or odd. The model is trained on randomly generated numbers and their corresponding even or odd labels.
